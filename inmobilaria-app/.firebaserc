@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "" //Colocar aqui el id de tu base de datos
+    "default": "home-99c02"
   }
 }
