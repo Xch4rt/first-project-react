@@ -28,6 +28,22 @@ const style = {
 }
 
 class RegistrarUsuarios extends Component{
+
+    state = {
+        usuario : { // servira para almacenar la data que tengamos en nuestros TextFields
+            nombre : '',
+            apellido : '',
+            email : '',
+            password : ''
+        }
+    }
+
+    onChange = e => {
+        let usuario = Object.assign({}, this.state.usuario); // clonar el estado del usuario en la variable
+        usuario[e.target.name] = e.target.value; // cargar lo que haya en la caja de texto y almacena dentro de la propiedad usuario.nombre
+
+    }
+
     render(){
         return(
             <Container maxWidth="md">
@@ -41,16 +57,16 @@ class RegistrarUsuarios extends Component{
                     <form style={style.form}>
                         <Grid container spacing={2}>
                             <Grid item md={6} xs={12}>
-                                <TextField name="nombre" fullWidth label="Ingrese su nombre"/>
+                                <TextField name="nombre" onChange={this.onChange} value={this.state.usuario.nombre} fullWidth label="Ingrese su nombre"/>
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField item name="apellido" fullWidth label="Ingrese sus apellidos"></TextField>
+                                <TextField item name="apellido" onChange={this.onChange} value={this.state.usuario.apellido} fullWidth label="Ingrese sus apellidos"></TextField>
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField name="email" fullWidth label="Ingresa tu correo"></TextField>
+                                <TextField name="email" onChange={this.onChange} value={this.state.usuario.email} fullWidth label="Ingresa tu correo"></TextField>
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField type="password" name="password" fullWidth label="Ingresa tu constraseña"></TextField>
+                                <TextField type="password" onChange={this.onChange} value={this.state.usuario.password} name="password" fullWidth label="Ingresa tu constraseña"></TextField>
                             </Grid>
                         </Grid>
                         <Grid container justify="center">
